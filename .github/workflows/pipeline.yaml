@@ -31,7 +31,7 @@ jobs:
           echo "Tests completed."
 
       - name: Build Docker image
-        run: docker build -t keyurpatil06/hello-world-app .
+        run: docker build -t raltoos/github-actions .
 
       - name: Log in to Docker Hub
         uses: docker/login-action@v2
@@ -40,14 +40,14 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Push Docker image to Docker Hub
-        run: docker push keyurpatil06/hello-world-app
+        run: docker push raltoos/github-actions
 
       - name: Deploy to localhost
         run: |
-          docker pull keyurpatil06/hello-world-app
+          docker pull raltoos/github-actions
           docker stop hello-world-app-container || true
           docker rm hello-world-app-container || true
-          docker run -d --name hello-world-app-container -p 3000:3000 keyurpatil06/hello-world-app
+          docker run -d --name hello-world-app-container -p 3000:3000 raltoos/github-actions
           echo "Waiting for container to start..."
           sleep 5
           docker ps
