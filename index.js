@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 
-app.get('/', (req, res) => res.send('Hello from Keyur'))
+app.get('/', (req, res) => res.send('Hello from Anuj Parwal'))
 
 if (process.env.NODE_ENV !== 'test') {
     app.listen(3000, () => console.log('App running'))
